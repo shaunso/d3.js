@@ -1,0 +1,56 @@
+<!-- DRAWING & LABELLING THE Y-AXIS + X-AXIS -->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>axis</title>
+  <script src="https://d3js.org/d3.v7.js"></script>
+</head>
+<body>
+  
+  <script>
+    const svg = d3.select("body") //create Svg element
+   .append("svg")
+   .attr("height",500)
+   .attr("width", 700)
+   .style("border", "solid 1px red")
+   .attr("transform","translate(0,0)");
+
+const data = [
+    { day:0, stock_value: 0 },
+    { day:5, stock_value: 100 },
+    { day:10, stock_value: 200 },
+    { day:15, stock_value: 400 },
+    { day:20, stock_value:150 }];
+
+
+// drawing the x-axis
+const xScale = d3.scaleLinear()
+    .domain(d3.extent(data, d => d.day))
+    .range([0, 600]);
+
+svg.append("g")
+    .call(d3.axisTop(xScale))
+    .attr("transform", "translate(70, 440)");
+
+svg.append("text")
+    .text("day")
+    .attr("transform", "translate(360,480)")
+
+// drawing the y-axis
+
+const yScale = d3.scaleLinear()
+    .domain(d3.extent(data, d => d.stock_value))
+    .range([430,0]);
+
+svg.append("g")
+    .call(d3.axisLeft(yScale))
+    .attr("transform", "translate(70, 10)")
+
+svg.append("text")
+    .text("stock value")
+    .attr("transform", "translate(30,260) rotate(-90)");
+  </script>
+</body>
+</html>
