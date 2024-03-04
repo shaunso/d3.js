@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test D3.js</title>
+</head>
+<body>
+
+
+  <script src="d3.v7.js"></script>
+  <script>
+    const dataset = [[1,0.99], [2,0.99], [3,1.00], [4,0.98], [5,0.83], [6,0.85],
+     [7,0.93], [8,0.97], [9,1.05], [10,0.86], [11,0.66], [12,0.75], [13,0.74],
+     [14,0.78], [15,0.82], [16,0.74], [17,0.83]];
+
+    const dataset2 = [[1,1.00], [2,1.00], [3,0.99], [4,0.99], [5,0.86], [6,0.86],
+     [7,0.85], [8,0.87], [9,0.94], [10,0.99], [11,0.99], [12,0.72], [13,0.66],
+     [14,0.68], [15,0.65], [16,0.65], [17,0.94]];
+
+    // accessor functions
+    const yAccessor = d => d[1];
+    const xAccessor = d => d[0];
+
+    // draw the svg 
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", 600)
+      .attr("height", 450)
+      .style("background-color", "pink")
+      .attr("transform", "translate(250, 100)");
+
+    // draw chart area
+    const chart = svg.append("g")
+      .attr("transform", "translate(50,50)");
+
+    // draw scales
+    const xScale = d3.scaleLinear()
+      .domain(d3.extent(dataset, xAccessor))
+      .range([0,500]);
+
+    const yScale = d3.scaleLinear()
+      .domain([0, d3.max(dataset, yAccessor)+0.1])
+      .range([350,0]);
+
+    // create line generator
+    const lineGenerator = d3.line()
+      .x(d => xScale(xAccessor(d)))
+      .y(d => yScale(yAccessor(d)));
+
+    // draw the path
+    chart.append("path")
+      .datum(dataset)
+      .attr("d", lineGenerator)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", 2);
+
+    // draw the second path
+    chart.append("path")
+    .datum(dataset2)
+    .attr("d", lineGenerator)
+    .attr("fill", "none")
+    .attr("stroke", "purple")
+    .attr("stroke-width", 2);
+
+    // draw axis
+    const xAxis = d3.axisBottom(xScale)
+      .ticks([17]);
+      
+    const xAxisGroup = chart.append("g")
+      .call(xAxis)
+      .attr("transform", "translate(0,350)")
+      .append("text")
+      .text("Age Group")
+      .attr("fill", "black")
+      .attr("transform", "translate(250,35)");
+
+    const yAxis = d3.axisLeft(yScale);
+
+    const yAxisGroup = chart.append("g")
+      .call(yAxis)
+      .append("text")
+      .text("male-to-female ratio")
+      .attr("fill", "black")
+      .attr("transform", "translate(-35, 150) rotate(-90)");
+
+    
+    </script>
+</body>
+</html>
