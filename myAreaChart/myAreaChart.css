@@ -1,0 +1,103 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  
+}
+ 
+#grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 4.5rem repeat(5, 1fr) 4.5rem;
+  grid-template-rows: 4.5rem max-content 3fr repeat(2, 1fr) 2.5rem;
+  gap: 0.3125rem;
+  grid-template-areas: 
+  "margin1 header header header header header margin2"
+  "margin1 . title title title . margin2"
+  "margin1 line-chart line-chart line-chart description description margin2"
+  "margin1 line-chart line-chart line-chart description description margin2"
+  "margin1 form form form form form margin2"
+  "footer footer footer footer footer footer footer";
+  
+  background-color: #fafafaca;
+  align-items: start;
+
+  /* border: 3px solid sandybrown; */
+}
+
+.margin1 {
+grid-area: margin1;
+background-color: violet;
+}
+
+.margin2 {
+grid-area: margin2;
+background-color: violet;
+}
+
+.header {
+grid-area: header;
+color: #00B398;
+font-size: 3rem;
+font-weight: 800;
+text-decoration: underline double 4px #00B398;
+letter-spacing: 0.25rem;
+text-align: end;
+align-self: start;
+}
+
+.title {
+  grid-area: title;
+  margin: 0;
+}
+
+#line-chart {
+  grid-area: line-chart;
+  place-self: center;
+  border: solid 4px #00B398;
+  border-radius: 8px;
+}
+
+.description {
+grid-area: description;
+color: #49CFB4;
+font-size: 1.5rem;
+max-width: 40ch;
+margin-top: 1rem;
+}
+
+.form {
+  grid-area: form;
+  background-color: orangered;
+}
+
+.footer {
+grid-area: footer;
+background-color: lightseagreen;
+place-self: stretch;
+}
+
+.title > h3, .title > p {
+  color: #49CFB4;
+  justify-self: end;
+}
+
+.title > h3 {
+  font-size: 2rem;
+  text-decoration: underline solid 0.25rem #49CFB4;
+}
+
+.title > p {
+  font-size: 1.5rem;
+  max-width: 40ch;
+  margin-top: 1rem;
+}
+
+li{
+  margin-bottom: 1rem;
+  text-align: start;
+}
