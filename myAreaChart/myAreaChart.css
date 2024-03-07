@@ -1,26 +1,25 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-sizing: border-box;
 }
 
 * {
   margin: 0;
-  
 }
  
 #grid-container {
   display: grid;
-  height: 100vh;
+  /* height: 100vh; */
   grid-template-columns: 4.5rem repeat(5, 1fr) 4.5rem;
-  grid-template-rows: 4.5rem max-content 3fr repeat(2, 1fr) 2.5rem;
+  grid-template-rows: 4.5rem max-content  repeat(2, 1fr) 2.5rem;
   gap: 0.3125rem;
   grid-template-areas: 
   "margin1 header header header header header margin2"
-  "margin1 . title title title . margin2"
-  "margin1 line-chart line-chart line-chart description description margin2"
-  "margin1 line-chart line-chart line-chart description description margin2"
-  "margin1 form form form form form margin2"
+  "margin1 title title title title title margin2"
+  "margin1 line-chart line-chart line-chart summary summary margin2"
+
+  "margin1 . form form form . margin2"
   "footer footer footer footer footer footer footer";
   
   background-color: #fafafaca;
@@ -43,7 +42,7 @@ background-color: violet;
 grid-area: header;
 color: #00B398;
 font-size: 3rem;
-font-weight: 800;
+font-weight: 700;
 text-decoration: underline double 4px #00B398;
 letter-spacing: 0.25rem;
 text-align: end;
@@ -52,7 +51,7 @@ align-self: start;
 
 .title {
   grid-area: title;
-  margin: 0;
+  margin-left: 125;
 }
 
 #line-chart {
@@ -62,42 +61,113 @@ align-self: start;
   border-radius: 8px;
 }
 
-.description {
-grid-area: description;
-color: #49CFB4;
+.summary {
+grid-area: summary;
+color: #00B398;
 font-size: 1.5rem;
 max-width: 40ch;
 margin-top: 1rem;
+
+}
+
+.summary > h4 {
+  color: #00B398;
+  margin-left: 40px;
+  font-size: 1.5rem;
+
 }
 
 .form {
   grid-area: form;
-  background-color: orangered;
+}
+
+.form > h3 {
+  margin-bottom: 5px;
+  font-size: 36px;
+  color: #00B398;
+  margin-left: 72px;
 }
 
 .footer {
 grid-area: footer;
 background-color: lightseagreen;
 place-self: stretch;
+text-align: center;
+}
+
+.footer > p {
+  margin-top: 8px;
+  color: #fcfcfc;
+  font-weight: 500;
 }
 
 .title > h3, .title > p {
-  color: #49CFB4;
+  color: #00B398;
   justify-self: end;
 }
 
 .title > h3 {
   font-size: 2rem;
-  text-decoration: underline solid 0.25rem #49CFB4;
+  text-decoration: underline solid 0.25rem #00B398;
 }
 
 .title > p {
   font-size: 1.5rem;
   max-width: 40ch;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 li{
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   text-align: start;
+  line-height: 1.2;
+  letter-spacing: 0;
+  list-style: circle;
+}
+
+form {
+  width: 80%;
+  margin: 0 auto 8px auto;
+}
+
+input[type=text] {
+  width: 100%;
+  height: 30px;
+  margin: 8px 0 18px 0;
+  border: 1.5px #00B398 solid;
+  border-radius: 5px;
+}
+
+textarea {
+  margin-bottom: 36px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 8px 0 18px 0;
+  border: 1.5px #00B398 solid;
+  border-radius: 5px;
+  resize: none;
+}
+
+fieldset {
+  border: 5px #00B398 solid;
+  border-radius: 8px;
+}
+
+label {
+  font-weight: 700;
+  color: #00B398;
+}
+
+input[type=submit] {
+  width: 30%;
+  height: 30px;
+  cursor: pointer;
+  background-color: #00B398;
+  color: #fcfcfc;
+  border: 1.5px #00B398 solid;
+  border-radius: 5px;
+  transition: font-weight 0.5s ease;
+}
+
+input[type=submit]:hover {
+  font-weight: 700;
 }

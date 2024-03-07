@@ -39,7 +39,7 @@ async function draw() {
 
 
   // 
-  // define the line generator
+  // define the area generator
   // 
   const areaGenerator = d3.area() 
     .x( d => xScale(xAccessor(d)))
@@ -83,13 +83,12 @@ async function draw() {
   ;
   xAxisGenerator.tickSize(3)
   .tickPadding(-5)
-  // .ticks(50) >>>>>>>>>>>>>>>>>>>> fix
   ;
 
   // y-axis
   const yAxisGenerator = d3.axisRight(yScale);
 
-  yAxisGenerator.tickFormat(d3.format(".2s"))
+  yAxisGenerator.tickFormat(d => d / 1000000)
     .tickSize(-width)
 
 
@@ -108,11 +107,14 @@ async function draw() {
 
   xAxis.selectAll(".tick text")
     .attr("color", "#666666")
-    .attr("font-weight", 700)
+    .attr("font-weight", 500)
     .attr("transform", "translate(0, 20) rotate(-90)");
   
    xAxis.selectAll(".tick line")
     .attr("stroke", "#666666");  
+
+  xAxis.select("g.tick:nth-child(12) > text:nth-child(2)")
+    .attr("fill", "#none");
 
     
   // y-axis
@@ -126,11 +128,48 @@ async function draw() {
 
   yAxis.selectAll(".tick text")
   .attr("color", "#666666")
-  .attr("font-weight", 700);
+  .attr("font-weight", 500)
+  .attr("transform", `translate(${-2},${-5})`)
+  .attr("text-anchor", "end");
 
   yAxis.selectAll(".tick line")
-  .attr("stroke", "#666666"); 
+  .attr("stroke", "#666666")
+  .attr("opacity", 0.4); 
 
+
+// 
+// drawing the labels
+// 
+// y-scale-label
+chart.append("g")
+  .attr("transform", `translate(${width-11},${-20})`)
+  .attr("fill", "#666666")
+  .append("text")
+  .text("millions")
+  .attr("font-size", 11)
+  .attr("font-weight", 500)
+  .attr("text-anchor", "start");
+
+chart.append("g")
+  .append("text")
+  .text("Number of active subscribers")
+  .attr("fill", "#00B398")
+  .attr("transform", `translate(${width + margin.right / 2},${height / 6}) rotate(90)`)
+
+// chart title
+chart.append("g")
+  .append("text")
+  .text("Econet Wireless Subscriber Growth")
+  .attr("transform", `translate(${0}, ${-25})`)
+  .attr("fill", "#00B398")
+  .attr("font-weight", 700);
+  
+  chart.append("text")
+  .text("2014-2023")
+  .attr("transform", "translate(0,-5)")
+  .attr("fill", "#00B398")
+  .attr("font-weight", 500)
+ 
 
 }
 
