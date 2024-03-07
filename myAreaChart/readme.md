@@ -19,3 +19,5 @@
 - The client-side validation relies on HTML. Need to extend this on the next project to include JavaScript to handle the validation on the client side
 
 - The wireframe for this project is included as an image in order for future me to see how I came up with this layout idea.
+
+- LINK TO WIREFRAME: `[https://www.dropbox.com/scl/fi/vifxy407peu9b49kqxqrq/wireFrame_myAreaChart.JPEG?rlkey=7zcs71b14ons2f5vmvuuchs5b&dl=0]`
