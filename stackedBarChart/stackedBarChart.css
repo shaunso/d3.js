@@ -1,0 +1,10 @@
+body{
+  background-color: #156a9e;
+}
+
+#chart{
+  margin: 25px auto;
+  width: 1000px;
+  position: relative;
+  background-color: bisque;
+}
