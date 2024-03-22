@@ -1,0 +1,62 @@
+/* importing the google font for the heading*/
+@import url('https://fonts.googleapis.com/css2?family=Lekton:wght@700&display=swap');
+/* importing the google font for the body text*/
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(215, 187, 187);
+}
+
+path {
+  stroke: white;
+  stroke-width: 0.8px;
+}
+
+.svgArea {
+  background-color: rgba(91, 159, 222, 0.686);
+  margin: 2rem 10rem;
+  border: 3px solid aliceblue;
+  border-radius: 9px;
+  width: 900px;
+  height: 500px;
+}
+
+h1, li {
+  color: azure;
+}
+
+h1 {
+  font-size: 7.5rem;
+  text-transform: uppercase;
+  text-decoration: double underline azure 5px;
+  font-family: "Lekton", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+li {
+  font-size: 2rem;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  text-align: left;
+  width: fit-content;
+  margin-left: 3rem;
+  letter-spacing: 0rem;
+  line-height: 2.5rem;
+  text-indent: -2rem;
+}
+
+.text {
+  font-family: "Comfortaa", sans-serif;
+  fill: black;
+  font-weight: 700;
+}
