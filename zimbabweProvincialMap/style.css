@@ -1,0 +1,16 @@
+body {
+  background-color: rosybrown;
+}
+
+path {
+  stroke: white;
+  stroke-width: 0.45px;
+  /* fill: rgb(180, 174, 117); */
+}
+
+.svgArea {
+  margin-top: 100px;
+  margin-left: 200px;
+  border: 3px solid aliceblue;
+  border-radius: 5px;
+}
