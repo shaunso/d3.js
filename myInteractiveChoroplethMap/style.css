@@ -1,0 +1,48 @@
+/* import the font style from google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color:black;
+}
+
+body {
+  background-image: linear-gradient(to right,rgb(250, 248, 246), rgba(222, 218, 213, 0.64), rgb(250, 248, 246));
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  grid-template-rows: max-content 1fr 300px;
+  gap: 0.5rem;
+}
+
+.grid-item {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+/* h1, p{
+
+} */
+h1 {
+  font-weight: 700;
+}
+
+.source, a {
+  font-weight: 300;
+  
+}
+
+main {
+  grid-area: 2 / 1 / 3 / 2;
+
+}
+
+#map-area {
+  background-color: brown;
+  border: 5px white solid;
+}
