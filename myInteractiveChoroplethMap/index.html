@@ -14,6 +14,7 @@
   <!-- load the script file -->
   <script src="app.js" defer></script>
 </head>
+
 <body>
   <div id="grid-container">
     <header class="grid-item">
@@ -23,9 +24,52 @@
     </header>
 
     <main>  
-        <div id="map-area"></div>
-      
+      <!-- container for the map drawn using d3.js -->
+      <div id="map-area"></div>      
     </main>
+
+    <aside>
+      <!-- container for the radio buttons for the user to select various categories at various map levels -->
+      <div>
+        <!-- user selects the administrative level of the map -->
+        <form autocomplete="off">
+          <!-- <fieldset class="test">
+            <legend>Select map level:</legend>
+              <input type="radio" name="administrative_level" id="province" value="54" checked>
+              <label for="province">Province</label><br>
+              <input type="radio" name="administrative_level" id="district">
+              <label for="district">District</label>
+          </fieldset> -->
+
+          <h5>Select map level:</h5>
+          <select id="administrative_level" autocomplete="off" size="2">
+            <option value="province" selected>Province</option>
+            <option value="district">District</option>
+          </select>
+  
+          <!-- user selects the category they want to display -->
+          <!-- <fieldset id="sfffsf">
+            <legend>Select category:</legend>
+              <input type="radio" name="category" id="populationDensity" value="dfffs" checked>
+              <label for="populationDensity">Population Density</label><br>
+              <input type="radio" name="category" id="population" value="54">
+              <label for="population">Population</label><br>
+              <input type="radio" name="category" id="area">
+              <label for="area">Area</label><br>
+              <input type="radio" name="category" id="households">
+              <label for="households">Number of households</label>            
+          </fieldset>   -->
+
+          <h5>Select category:</h5>
+          <select id="category" autocomplete="off" size="4">
+            <option value="populationDensity" selected>Population density</option>
+            <option value="population">Population</option>
+            <option value="area" name="sdsd">Land area</option>
+            <option value="households">Number of households</option>
+          </select>
+        </form>
+      </div>
+    </aside>
 </div>
 </body>
 </html>
