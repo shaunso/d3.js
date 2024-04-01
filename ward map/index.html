@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Choropleth Map of Zimbabwe</title>
+  <!-- load the style sheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- load the favicon -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <!-- load the d3.js library -->
+  <script src="https://d3js.org/d3.v7.js" defer></script>
+  <!-- load the topoJSON package -->
+  <script src="https://unpkg.com/topojson@3" defer></script>
+  <!-- load the script file -->
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <div id="grid-container">
+    <header class="grid-item">
+      <h1>Zimbabwe Population Density, 2022</h1>
+      <p>per district</p>
+      <p class="source">Source: <a href="https://www.zimstat.co.zw/census/" target="_blank">ZIMSTAT</a></p>
+    </header>
+
+    <main>  
+      <!-- container for the map drawn using d3.js -->
+      <div id="map-area"></div>      
+    </main>
+
+    <aside>
+      
+    </aside>
+</div>
+</body>
+</html>
