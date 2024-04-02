@@ -1,7 +1,7 @@
 async function draw() {
 
   // load the JSON file with the data that draws the map for the provinces and districts
-  const topology = await d3.json("wardMap-min.json");  
+  const topology = await d3.json("p_w.json");  
 
   // loading the data retrieved from the .CSV, dependent on the user input
   // variable is called in the next block, which is an if statement
@@ -19,8 +19,8 @@ async function draw() {
 
   // defining the map projection type
   const mapProjection = d3.geoMercator()
-    .center([0, 28]) 
-    .scale(300)
+    .center([20, -5]) 
+    .scale(480)
     .rotate([0, 0, -4]); 
 
   // drawing the svg area for where d3 will draw the map
@@ -50,15 +50,21 @@ async function draw() {
   // discrete input and discrete output where the bands for the domain are varying, hence d3.scaleThreshold() is used
   const colorScale = d3.scaleQuantile()
   .domain(areaData)
-  .range(d3.schemePRGn[11]);
+  .range(d3.schemeBlues[9]);
 
   // drawing the map on the web page
   chart.selectAll("path")
-    .data(topojson.feature(topology, topology.objects.land).features)
+    .data(topojson.feature(topology, topology.objects.ward).features)
     .join("path")
     .attr("d", pathGenerator)
     .attr("fill", d => colorScale(valueMap.get(d.properties.ADM3_PCODE)));  
 
+  chart.append("g")
+    .selectAll("path")
+    .data(topojson.feature(topology, topology.objects.province).features)
+    .join("path")
+    .attr("d", pathGenerator)
+    .attr("class", "outline");
 
   ///////////////////////////////////////////////
     // zoom function
