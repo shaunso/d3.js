@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body { 
+  background-color: rgba(217, 228, 249, 0.77);
+}
+
+h1 {
+  color: rgb(176, 112, 28);
+  font-family: fantasy;
+  width: fit-content;
+  margin: 2rem auto;
+  border-bottom: 5.5px solid rgb(176, 112, 28);
+  border-radius: 5px;
+}
+
+#line-chart {
+  border: 4px solid rgba(95, 158, 160, 0.407);
+  border-radius: 4px;
+  width: fit-content;
+  margin: 3rem auto;
+}
