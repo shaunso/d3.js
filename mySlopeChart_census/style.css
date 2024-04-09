@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #2a3132df;
+}
+
+body {
+  background: linear-gradient(#9198e5, #e66465);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h1 {
+  padding: 3rem 5rem;
+  border: dotted tomato 6px;
+  width: 32ch;
+  margin: 2rem auto;
+  text-align: center;
+  font-style: oblique;
+  box-shadow: -12.5px -12.5px 6px rgb(101, 105, 105), 12.5px 12.5px 6px rgb(101, 105, 105);
+  letter-spacing: 0.5rem;
+  word-spacing: 1rem;
+  line-height: 3rem;
+}
+
+.line {
+  border-bottom: solid 8.5px #31473A;
+  margin-top: 4rem;
+}
