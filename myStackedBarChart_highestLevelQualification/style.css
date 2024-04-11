@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(232, 238, 218, 0.577);
+  color: rgb(121, 171, 237);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+  width: fit-content;
+  margin: 2rem auto;
+  text-transform: capitalize;
+  text-decoration: dotted underline 5px currentColor;
+}
+
+#bar-chart {
+  width: fit-content;
+  margin: 1rem auto;
+}
+
+.tick text {
+  text-anchor: middle;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tick line {
+  stroke: #333333;
+  stroke-width: 1px;
+  stroke-opacity: 0.2;
+  stroke-dasharray: 3px;
+  stroke-linecap: round;
+}
+
+
