@@ -3,6 +3,8 @@ async function draw() {
   // load the JSON file with the data that draws the map for the provinces and districts
   const topology = await d3.json("w.json");  
 
+  const provincialBorders = await d3.json("p.json");
+
   // loading the data retrieved from the .CSV, dependent on the user input
   // variable is called in the next block, which is an if statement
   // default option shall be _population density_
@@ -16,8 +18,8 @@ async function draw() {
 
   // defining the map projection type
   const mapProjection = d3.geoMercator()
-    .center([27, -20]) 
-    .scale(4380)
+    .center([0, 0]) 
+    .scale(400)
     .rotate([0, 0, -4]); 
 
   // drawing the svg area for where d3 will draw the map
@@ -38,7 +40,6 @@ async function draw() {
   // create a map object in order to store the population density per square kilometre per district using the ADM2_PCODE & POPULATION_DENSITY in key:value pairs
   // map will be used to select the colour of each district using the thresholds defined by the colorScale variable
   const valueMap = new Map(data.map( d => [d.ADM3_PCODE, +d3.format(".1f")(d.POPULATION_DENSITY)]));
-  console.log(valueMap)
   
   // defining the domain and colour scale
   const domain = [0.1, Math.max(...data.map(d => d.POPULATION_DENSITY))];
@@ -46,9 +47,9 @@ async function draw() {
   const color =  d3.scaleLog()
     .base(2)
     .domain(domain)
-    .interpolate(() => d3.interpolatePlasma);
+    .interpolate(() => d3.interpolateYlOrRd); // or use d3.interpolatePlasma
 
-  // drawing the map on the web page
+  // drawing the map on the html body
   chart.selectAll("path")
     .data(topojson.feature(topology, topology.objects.ward).features)
     .join("path")
@@ -58,14 +59,15 @@ async function draw() {
       console.log(`The population density for ${i.properties.ADM2_EN} ward ${i.properties.ADM3_EN} is ${d3.format(",")(valueMap.get(i.properties.ADM3_PCODE))} people per square kilometer`);
     });
   
-/////////////////////////////////
-// renders the provincial boundaries
-    // chart.append("path")
-    //   .datum(topojson.mesh(provinceTopology, provinceTopology.objects.province, (a, b) => a !== b))
-    //   .attr("fill", "none")
-    //   .attr("stroke", "white")
-    //   .attr("stroke-linejoin", "round")
-    //   .attr("d", pathGenerator);
+  /////////////////////////////////
+  // renders the provincial boundaries
+  chart.append("path")
+    .datum(topojson.mesh(provincialBorders, provincialBorders.objects.province, (a, b) => a !== b))
+    .attr("fill", "none")
+    .attr("stroke", "white")
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-width", 0.75)
+    .attr("d", pathGenerator);
 
   ///////////////////////////////////////////////
     // zoom function

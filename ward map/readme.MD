@@ -14,4 +14,7 @@ Simple choropleth map of zimbabwe with zero frills, no thrills & as plain as oyi
 
 -Deleted most of the CSS but added a few items
 
--Added the topojson package file for offline usage
+**14-04-24**
+-Final form of the map now. Now includes the provincial boundaries
+
+-Need to figure out the most appropriate colour scheme
